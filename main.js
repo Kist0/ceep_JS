@@ -1,26 +1,26 @@
 import BotaoConclui from "./componentes/concluirTarefa.js";
 import BotaoDeleta from "./componentes/deletarTarefa.js";
 
-const criarTarefa = (evento) => {
-  evento.preventDefault();
-
-  const lista = document.querySelector("[data-list]");
+const newTask = (event) => {
+  event.preventDefault();
+  console.log(event)
+  const list = document.querySelector("[data-list]");
   const input = document.querySelector("[data-form-input]");
-  const valor = input.value;
+  const newMessage = input.value;
 
-  const tarefa = document.createElement("li");
-  tarefa.classList.add("task");
+  const task = document.createElement("li");
+  task.classList.add('task')
 
-  const conteudo = `<p class="content">${valor}</p>`;
+  const content = `<p class="content">${newMessage}</p>`;
 
-  tarefa.innerHTML = conteudo;
+  task.innerHTML = content;
 
-  tarefa.appendChild(BotaoConclui());
-  tarefa.appendChild(BotaoDeleta());
-  lista.appendChild(tarefa);
+  task.appendChild(BotaoConclui());
+  task.appendChild(BotaoDeleta());
+  list.appendChild(task);
   input.value = " ";
 };
 
-const novaTarefa = document.querySelector("[data-form-button]");
+const formButton = document.querySelector("[data-form-button]");
 
-novaTarefa.addEventListener("click", criarTarefa);
+formButton.addEventListener("click", newTask);
